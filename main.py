@@ -84,7 +84,9 @@ while running:
         if event.type == pygame.QUIT:
             pygame.quit()
             running = False
+
         if event.type == pygame.KEYDOWN:
+
             if not put_away:
                 match event.key:
                     case pygame.K_1:
@@ -93,6 +95,12 @@ while running:
                         put_away = get_move(count_of_items, 2)
                     case pygame.K_3:
                         put_away = get_move(count_of_items, 3)
+
+            if is_end:
+                count_of_items = 15
+                player = choice((-1, 1))
+                is_end = False
+
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = pygame.mouse.get_pos()
             if player == 1:
@@ -109,5 +117,10 @@ while running:
                 if mouse_pos[0] in range(900, 1100):
                     if mouse_pos[1] in range(but_y, but_y + 100):
                         put_away = get_move(count_of_items, 3)
+
+            if is_end:
+                count_of_items = 15
+                player = choice((-1, 1))
+                is_end = False
 
     clock.tick(60)
